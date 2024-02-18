@@ -3,6 +3,8 @@ from attr.test_attr import TestAttrEntity, TestAttrSystem
 from comp.test_comp import TestComp
 from ecs_core.system_base import SystemBase
 from ecs_core.system_manager import system_register
+from event.event_const import Event
+from event.event_manager import EventManager
 
 
 @system_register
@@ -22,8 +24,4 @@ class TestSystem(SystemBase):
 
 	def test_func(self):
 		for ent in self._entities:
-			ent[TestComp].test_func(ent)
-			print("a: %s" % ent[TestAttrEntity].a)
-			print("b: %s" % ent[TestAttrEntity].b)
-			print("c: %s" % self[TestAttrSystem].c)
-			print("d: %s" % self[TestAttrSystem].d)
+			EventManager.trigger_event(ent.uuid, Event.TEST_EVENT, {})

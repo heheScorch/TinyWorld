@@ -12,7 +12,7 @@ class SystemBase(object):
 	def __init__(self):
 		self._entities = set()
 		self._attrs = {}
-		self._logger = None
+		self._logger = LogManager.get_debug_logger(self.__class__.__name__)
 
 	def init(self, init_dict):
 		self.init_attrs()
@@ -21,9 +21,6 @@ class SystemBase(object):
 		for attr in self.ATTRS:
 			attr_ins = attr()
 			self._attrs[attr] = attr_ins
-
-	def init_logger(self):
-		self._logger = LogManager.get_debug_logger(self.__class__.__name__)
 
 	def __getitem__(self, item):
 		if item in self.ATTRS:

@@ -11,6 +11,8 @@ from helper.decorators import singleton
 import entity       # noqa
 import comp         # noqa
 import system       # noqa
+
+from event import event_const       # noqa
 from log.log_manager import LogManager
 
 
@@ -51,5 +53,3 @@ class TinyWorld(object):
 
 	def stop(self):
 		pass
-
-# todo: 事件系统

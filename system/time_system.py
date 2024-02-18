@@ -40,7 +40,7 @@ class TimeSystem(SystemBase):
 	def tick(self):
 		super(TimeSystem, self).tick()
 		self.time_elapse(seconds=1)
-		print(TimeComp.get_current_time())
+		self._logger.info(TimeComp.get_current_time())
 
 	def time_elapse(self, seconds):
 		current_time = TimeComp.get_current_time()
