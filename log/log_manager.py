@@ -6,6 +6,15 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 class LogManager(object):
+    WORLD_LOG = "log/log_files/TinyWorld.log"
+    DEBUG_LOG = "log/log_files/Debug.log"
+
+    @classmethod
+    def clear_logs(cls):
+        for log_file in [cls.WORLD_LOG, cls.DEBUG_LOG]:
+            filename = os.path.join(os.getcwd(), log_file)
+            with open(filename, 'w') as file:
+                file.truncate(0)
 
     @classmethod
     def _get_logger(cls, logger_name, filename=None):
@@ -25,20 +34,13 @@ class LogManager(object):
     @classmethod
     def get_world_logger(cls):
         logger_name = "TinyWorld"
-        filename = os.path.join(os.getcwd(), "log/log_files/TinyWorld.log")
+        filename = os.path.join(os.getcwd(), cls.WORLD_LOG)
         return cls._get_logger(logger_name, filename)
 
     @classmethod
-    def get_entity_logger(cls, entity_uuid, filename):
-        return cls._get_logger(entity_uuid, filename)
-
-    @classmethod
-    def get_comp_logger(cls, comp_name, filename):
-        return cls._get_logger(comp_name, filename)
-
-    @classmethod
-    def get_system_logger(cls, system_name, filename):
-        return cls._get_logger(system_name, filename)
+    def get_debug_logger(cls, logger_name):
+        filename = os.path.join(os.getcwd(), cls.DEBUG_LOG)
+        return cls._get_logger(logger_name, filename)
 
     @classmethod
     def get_formatter(cls):
@@ -49,11 +51,12 @@ class LogManager(object):
         pass
 
 
+# just for test
 # if __name__ == '__main__':
 #     filename = os.path.join(os.getcwd(), "log_files/test.log")
 #     if os.path.exists(filename):
 #         os.remove(filename)
-#     logger = LogManager.get_entity_logger("1234", filename)
+#     logger = LogManager.get_debug_logger("1234", filename)
 #     logger.debug("debug")
 #     logger.info("info")
 #     logger.warning("warning")
