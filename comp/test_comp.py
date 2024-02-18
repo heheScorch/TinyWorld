@@ -7,5 +7,5 @@ class TestComp(CompBase):
 	DEPEND_ATTRS = (TestAttrEntity,)
 
 	@classmethod
-	def test_func(cls, ent):
+	def test_func(cls):
 		print("test comp test func")

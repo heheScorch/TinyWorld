@@ -20,6 +20,7 @@ class TinyWorld(object):
 	def __init__(self):
 		self._systems = system_manager.get_all_system()
 		self._entities = {}
+		LogManager.clear_logs()
 		self._logger = LogManager.get_world_logger()
 
 	def generate_init_entities(self):
@@ -27,9 +28,10 @@ class TinyWorld(object):
 		ent.init()
 
 	def run(self):
-		self._logger.info("hello, tiny world")
+		self._logger.info("Run tiny world")
 		for s in self._systems:
-			s.init()
+			# todo: 为system添加init dict
+			s.init({})
 		self.generate_init_entities()
 		self.main_loop()
 

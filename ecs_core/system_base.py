@@ -23,8 +23,7 @@ class SystemBase(object):
 			self._attrs[attr] = attr_ins
 
 	def init_logger(self):
-		log_file_path = LogManager.get_log_file_path()
-		self._logger = LogManager.get_system_logger(self.__class__.__name__, log_file_path)
+		self._logger = LogManager.get_debug_logger(self.__class__.__name__)
 
 	def __getitem__(self, item):
 		if item in self.ATTRS:
