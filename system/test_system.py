@@ -13,8 +13,8 @@ class TestSystem(SystemBase):
 	def __init__(self):
 		super(TestSystem, self).__init__()
 
-	def init(self):
-		super(TestSystem, self).init()
+	def init(self, init_dict):
+		super(TestSystem, self).init(init_dict)
 
 	def tick(self):
 		super(TestSystem, self).tick()

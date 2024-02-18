@@ -14,7 +14,7 @@ class SystemBase(object):
 		self._attrs = {}
 		self._logger = None
 
-	def init(self):
+	def init(self, init_dict):
 		self.init_attrs()
 
 	def init_attrs(self):
