@@ -35,11 +35,13 @@ class LogManager(object):
     def get_world_logger(cls):
         logger_name = "TinyWorld"
         filename = os.path.join(os.getcwd(), cls.WORLD_LOG)
+        cls.check_filename_exists(filename)
         return cls._get_logger(logger_name, filename)
 
     @classmethod
     def get_debug_logger(cls, logger_name):
         filename = os.path.join(os.getcwd(), cls.DEBUG_LOG)
+        cls.check_filename_exists(filename)
         return cls._get_logger(logger_name, filename)
 
     @classmethod
@@ -49,6 +51,13 @@ class LogManager(object):
     @classmethod
     def get_log_file_path(cls):
         pass
+
+    @classmethod
+    def check_filename_exists(cls, filename):
+        if not os.path.exists(filename):
+            os.makedirs(os.path.dirname(filename))
+            with open(filename, "w") as f:
+                pass
 
 
 # just for test
