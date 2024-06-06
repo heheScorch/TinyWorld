@@ -8,4 +8,5 @@ class TestComp(CompBase):
 
 	@classmethod
 	def test_func(cls):
-		print("test comp test func")
+		pass
+		# print("test comp test func")
